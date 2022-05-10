@@ -105,7 +105,7 @@ exports.registerNewSubscriber = async (event) => {
 
 
 
-      return lambdaResponse(200, 'Success! Registration completed. You have purchased an enterprise product that requires some additional setup. A representative from our team will be contacting you within two business days with your account credentials. Please contact Support through our website if you have any questions.');
+      return lambdaResponse(200, 'Success! Registration completed. A representative from our team will be contacting you as soon as possible in order to further discuss the deployment of our product. Please contact Support through our website if you have any questions.');
     } catch (error) {
       console.error(error);
       return lambdaResponse(400, 'Registration data not valid. Please try again, or contact support!');
