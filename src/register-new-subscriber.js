@@ -27,11 +27,11 @@ const setBuyerNotificationHandler = function (contactEmail) {
       Body: {
         Html: {
           Charset: "UTF-8",
-          Data: "<!DOCTYPE html><html><head><title>Welcome!<\/title><\/head><body><h1>Welcome!<\/h1><p>Thanks for purchasing<\/p><p>We\u2019re thrilled to have you on board. Our team is hard at work setting up your account, please expect to hear from a member of our customer success team soon<\/p><\/body><\/html>"
+          Data: "<!DOCTYPE html><html><head><title>Welcome!<\/title><\/head><body><h1>Welcome!<\/h1><p>Thanks for purchasing<\/p><p>We\u2019re thrilled to have you on board. Please expect to hear from a member of our customer support team soon.<\/p><\/body><\/html>"
         },
         Text: {
           Charset: "UTF-8",
-          Data: "Welcome! Thanks for purchasing. We’re thrilled to have you on board. Our team is hard at work setting up your account, please expect to hear from a member of our customer success team soon"
+          Data: "Welcome! Thanks for purchasing. We’re thrilled to have you on board. Please expect to hear from a member of our customer support team soon."
         }
       },
 
