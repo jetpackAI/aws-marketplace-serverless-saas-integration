@@ -94,6 +94,7 @@ Resources:
         DefaultRootObject: "index.html"
         Enabled: true
         HttpVersion: http2
+        PriceClass: PriceClass_100
         # List of origins that Cloudfront will connect to
         Origins:
           - Id: s3-website
