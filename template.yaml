@@ -102,6 +102,11 @@ Resources:
               # Restricting Bucket access through an origin access identity
               OriginAccessIdentity:
                 Fn::Sub: "origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}"
+        Aliases:
+          - "subscribe.flow.jetpack.ai"
+        ViewerCertificate:
+          SslSupportMethod: sni-only
+          AcmCertificateArn: "arn:aws:acm:us-east-1:879171872196:certificate/dd41fdcf-1b9b-4de5-9fbb-b13513164a87"
         # To connect the CDN to the origins you need to specify behaviours
         DefaultCacheBehavior:
           # Compress resources automatically ( gzip )
@@ -168,7 +173,7 @@ Resources:
               Service:
                 - "lambda.amazonaws.com"
                 - "edgelambda.amazonaws.com"
-
+      
   AWSMarketplaceMeteringRecords:
     Type: AWS::DynamoDB::Table
     Condition: CreateSubscriptionLogic
