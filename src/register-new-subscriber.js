@@ -29,6 +29,39 @@ const setBuyerNotificationHandler = function (contactEmail) {
   if (typeof marketplaceSellerEmail == "undefined") {
     return;
   }
+
+  const newSubscriberEmail = `
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to Flow!</title>
+  </head>
+  <body>
+    <p>Congratulations!</p>
+    <p>
+      You are receiving this email because you recently subscribed to Flow on
+      the AWS Marketplace and completed the contact form.
+    </p>
+    <p>
+      Our team is already at work to create your environment. In order
+      to finalize its creation, we will need to get in contact with you so
+      please expect to hear from a member of our team in a few business days.
+    </p>
+    <br />
+    <p>Thank you !</p>
+    <p>The Jetpack.AI Team</p>
+  </body>
+</html>
+`;
+
+  const newSubscriberText = `
+Congratulations! 
+You are receiving this message because you recently subscribed to Flow on the AWS Marketplace and completed the contact form. Our team is already at work to create your environment. 
+In order to finalize its creation, we will need to get in contact with you so please expect to hear from a member of our team in a few business days. 
+
+Thank you ! 
+The Jetpack.AI Team`;
+
   let params = {
     Destination: {
       ToAddresses: [contactEmail],
@@ -37,17 +70,17 @@ const setBuyerNotificationHandler = function (contactEmail) {
       Body: {
         Html: {
           Charset: "UTF-8",
-          Data: "<!DOCTYPE html><html><head><title>Welcome!</title></head><body><h1>Welcome!</h1><p>Thanks for purchasing</p><p>We\u2019re thrilled to have you on board. Please expect to hear from a member of our customer support team soon.</p></body></html>",
+          Data: newSubscriberEmail,
         },
         Text: {
           Charset: "UTF-8",
-          Data: "Welcome! Thanks for purchasing. We’re thrilled to have you on board. Please expect to hear from a member of our customer support team soon.",
+          Data: newSubscriberText,
         },
       },
 
       Subject: {
         Charset: "UTF-8",
-        Data: "Welcome Email",
+        Data: "Your Flow subscription",
       },
     },
     Source: marketplaceSellerEmail,
@@ -118,7 +151,7 @@ exports.registerNewSubscriber = async (event) => {
 
       return lambdaResponse(
         200,
-        "Success! Registration completed. A representative from our team will be contacting you as soon as possible in order to further discuss the deployment of our product. Please contact Support through our website if you have any questions."
+        "Success! Registration completed. A member of our team will be contacting you in a few business days in order to finalize the creation of your environment. Please contact us through our website if you have any questions."
       );
     } catch (error) {
       console.error(error);
